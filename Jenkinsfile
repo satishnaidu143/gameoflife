@@ -20,7 +20,7 @@ pipeline{
         }
         stage('archive artifacts'){
             steps{
-                archiveArtifacts '**/*.war'
+                archiveArtifacts 'gameoflife-web/target/gameoflife.war'
             }
         }
         stage('junit reports'){
@@ -36,7 +36,7 @@ pipeline{
 			  docker image build -t $IMAGE_ID .
               docker tag $IMAGE_ID $IMAGE
 			  docker push $IMAGE
-			  docker rmi $IMAGE_ID $IMAGE '''
+			  docker rmi tomcat:8 $IMAGE_ID $IMAGE '''
        }
 	}
 	stage('updating latest image'){
