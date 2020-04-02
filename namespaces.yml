@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: env-dev
+  name: gameoflife-dev
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: env-qa
+  name: gameoflife-qa
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: env-prod
+  name: gameoflife-prod
 ---

@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tomcat-svc
-  namespace: env-dev
+  name: gameoflife-svc
+  namespace: gameoflife-dev
 spec:
   selector:
     env1: dev
@@ -11,5 +11,5 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 8080
-    nodePort: 30001
+    nodePort: 30002
   type: LoadBalancer

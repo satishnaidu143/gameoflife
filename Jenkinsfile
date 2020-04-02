@@ -10,7 +10,7 @@ pipeline{
         stages{
         stage('git clone'){
             steps{
-                git 'https://github.com/satishnaidu143/rideeasy.git'
+                git 'https://github.com/satishnaidu143/gameoflife.git'
             }
         }
         stage('package'){
@@ -25,14 +25,14 @@ pipeline{
         }
         stage('junit reports'){
             steps{
-                junit 'server/target/surefire-reports/*.xml'
+                junit 'gameoflife-web/target/surefire-reports/*.xml'
             }
         }
 		stage('Pushing image to DockerHub') {
             steps {
              sh label: '', script: '''pwd
 			 whoami
-			 sudo scp /var/lib/jenkins/workspace/rideeasy/webapp/target/webapp.war /var/lib/jenkins/workspace/rideeasy
+			 sudo scp /var/lib/jenkins/workspace/rideeasy/webapp/target/webapp.war /var/lib/jenkins/workspace/gameoflife/webapp.war
 			  docker image build -t $IMAGE_ID .
               docker tag $IMAGE_ID $IMAGE
 			  docker push $IMAGE
@@ -41,7 +41,7 @@ pipeline{
 	}
 	stage('updating latest image'){
             steps{
-                sh("sed -i.bak 's#snaidu/rideeasy:1#${IMAGE}#' ./deployment.yml")
+                sh("sed -i.bak 's#snaidu/gameoflife:1#${IMAGE}#' ./deployment.yml")
             }
         }
 	  stage('k8s Deployment') {
