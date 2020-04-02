@@ -32,7 +32,7 @@ pipeline{
             steps {
              sh label: '', script: '''pwd
 			 whoami
-			 sudo scp /var/lib/jenkins/workspace/gameoflife/gameoflife-web/target/gameoflife.war /var/lib/jenkins/workspace/gameoflife/
+			 sudo scp /var/lib/jenkins/workspace/$JOB_NAME/gameoflife-web/target/gameoflife.war /var/lib/jenkins/workspace/$JOB_NAME/
 			  docker image build -t $IMAGE_ID .
               docker tag $IMAGE_ID $IMAGE
 			  docker push $IMAGE
